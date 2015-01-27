@@ -23,11 +23,11 @@ module.directive 'abnTree',['$timeout',($timeout)->
 
 
     # default values ( Font-Awesome 3 or 4 or Glyphicons )
-    attrs.iconExpand   ?= 'icon-plus  glyphicon glyphicon-plus  fa fa-plus'    
-    attrs.iconCollapse ?= 'icon-minus glyphicon glyphicon-minus fa fa-minus'
-    attrs.iconLeaf     ?= 'icon-file  glyphicon glyphicon-file  fa fa-file'
+    attrs.iconExpand   ?= 'icon-plus'
+    attrs.iconCollapse ?= 'icon-minus'
+    attrs.iconLeaf     ?= 'icon-file-empty'
 
-    attrs.expandLevel  ?= '3'
+    attrs.expandLevel  ?= '2'
 
     expand_level = parseInt attrs.expandLevel,10
 

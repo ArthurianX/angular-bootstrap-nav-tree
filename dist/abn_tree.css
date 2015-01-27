@@ -1,21 +1,85 @@
-/* 
-   abn-tree.css
 
-   style for the angular-bootstrap-nav-tree
-   for both Bootstrap 2 and Bootstrap 3
+.nav {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.nav > li {
+    position: relative;
+    display: block;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+.nav > li.disabled > a {
+    color: #777777;
+}
+.nav > li.disabled > a:hover,
+.nav > li.disabled > a:focus {
+    color: #777777;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+    background-color: #eeeeee;
+    border-color: #337ab7;
+}
+.nav .nav-divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+.nav > li > a > img {
+    max-width: none;
+}
+.nav-pills > li {
+    float: left;
+}
+.nav-pills > li > a {
+    border-radius: 4px;
+}
+.nav-pills > li + li {
+    margin-left: 2px;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    color: #ffffff;
+    background-color: #337ab7;
+}
+.nav-stacked > li {
+    float: none;
+}
+.nav-stacked > li + li {
+    margin-top: 2px;
+    margin-left: 0;
+}
+.nav-justified {
+    width: 100%;
+}
+.nav-justified > li {
+    float: none;
+}
+.nav-justified > li > a {
+    text-align: center;
+    margin-bottom: 5px;
+}
+.nav-justified > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+}
 
-*/
-
-
-
-/* ------------------------------------------
-AngularJS Animations...
-
-The first selector is for Angular 1.1.5
-The second selector is for Angular 1.2.0
-
-*/
-.abn-tree-animate-enter,
 li.abn-tree-row.ng-enter {
   transition: 200ms linear all;
   position: relative;
@@ -23,13 +87,11 @@ li.abn-tree-row.ng-enter {
   opacity: 0;
   max-height:0px;
 }
-.abn-tree-animate-enter.abn-tree-animate-enter-active,
 li.abn-tree-row.ng-enter-active{
   opacity: 1;
   max-height:30px;
 }
 
-.abn-tree-animate-leave,
 li.abn-tree-row.ng-leave {
   transition: 200ms linear all;
   position: relative;
@@ -38,8 +100,7 @@ li.abn-tree-row.ng-leave {
   max-height: 30px;
   opacity: 1;
 }
-.abn-tree-animate-leave.abn-tree-animate-leave-active,
-li.abn-tree-row.ng-leave-active {  
+li.abn-tree-row.ng-leave-active {
   height: 0px;
   max-height:0px;
   opacity: 0;
@@ -58,8 +119,6 @@ Angular 1.2.0 Animation
 .abn-tree-animate.ng-enter{
 
 }
-
-
 
 
 /*
@@ -119,3 +178,41 @@ ul.nav.nav-list.abn-tree .level-9 .indented {
   position: relative;
   left: 160px;
 }
+
+
+/* Default Icons */
+
+@font-face {
+    font-family: 'icomoon';
+    src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBzUAAAC8AAAAYGNtYXDqRummAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5Zvkul9EAAAF4AAABiGhlYWQE+XfHAAADAAAAADZoaGVhB8IDyAAAAzgAAAAkaG10eA4AAEAAAANcAAAAHGxvY2EA0AFKAAADeAAAABBtYXhwAAsAPAAAA4gAAAAgbmFtZVcZpu4AAAOoAAABRXBvc3QAAwAAAAAE8AAAACAAAwQAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADqCwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAACAAAAAwAAABQAAwABAAAAFAAEAEAAAAAMAAgAAgAEAAEAIOkk6gv//f//AAAAAAAg6STqCv/9//8AAf/jFuAV+wADAAEAAAAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAADAED/wAPAA8AAGQAiADkAAAEuAScuAScuASMhIgYVERQWMyEyNjURNCYnJx4BFyM1HgEXExQGIyEiJjURNDYzMDoCMRUUFjsBEQOWES0ZGjMXJykL/hAhLy8hAuAhLw4chRclDZoRKRdvCQf9IAcJCQebupsTDeAC2xczGhktERwOLyH8oCEvLyECcAspJzYXKRGaDSUX/P8HCQkHA2AHCeANE/2QAAABAAD/wAQAA8AAJAAAASERNCYrASIGFREhIgYdARQWMyERFBY7ATI2NREhMjY9ATQmIwPg/qATDcANE/6gDRMTDQFgEw3ADRMBYA0TEw0CQAFgDRMTDf6gEw3ADRP+oA0TEw0BYBMNwA0TAAABAAABQAQAAkAAEAAAExUUFjMhMjY9ATQmIyEiBhUAEw0DwA0TEw38QA0TAiDADRMTDcANExMNAAEAAAABAABzwL1yXw889QALBAAAAAAA0O0ZpQAAAADQ7RmlAAD/wAQAA8AAAAAIAAIAAAAAAAAAAQAAA8D/wAAABAAAAAAABAAAAQAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAACAAAABAAAQAQAAAAEAAAAAAAAAAAKABQAHgByAKgAxAABAAAABwA6AAMAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADgAAAAEAAAAAAAIADgBHAAEAAAAAAAMADgAkAAEAAAAAAAQADgBVAAEAAAAAAAUAFgAOAAEAAAAAAAYABwAyAAEAAAAAAAoANABjAAMAAQQJAAEADgAAAAMAAQQJAAIADgBHAAMAAQQJAAMADgAkAAMAAQQJAAQADgBVAAMAAQQJAAUAFgAOAAMAAQQJAAYADgA5AAMAAQQJAAoANABjAGkAYwBvAG0AbwBvAG4AVgBlAHIAcwBpAG8AbgAgADEALgAwAGkAYwBvAG0AbwBvAG5pY29tb29uAGkAYwBvAG0AbwBvAG4AUgBlAGcAdQBsAGEAcgBpAGMAbwBtAG8AbwBuAEYAbwBuAHQAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4ALgAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA) format('truetype'),
+    url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAVcAAsAAAAABRAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABCAAAAGAAAABgDxIHNWNtYXAAAAFoAAAAVAAAAFTqRummZ2FzcAAAAbwAAAAIAAAACAAAABBnbHlmAAABxAAAAYgAAAGI+S6X0WhlYWQAAANMAAAANgAAADYE+XfHaGhlYQAAA4QAAAAkAAAAJAfCA8hobXR4AAADqAAAABwAAAAcDgAAQGxvY2EAAAPEAAAAEAAAABAA0AFKbWF4cAAAA9QAAAAgAAAAIAALADxuYW1lAAAD9AAAAUUAAAFFVxmm7nBvc3QAAAU8AAAAIAAAACAAAwAAAAMEAAGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAA6gsDwP/AAEADwABAAAAAAQAAAAAAAAAAAAAAIAAAAAAAAgAAAAMAAAAUAAMAAQAAABQABABAAAAADAAIAAIABAABACDpJOoL//3//wAAAAAAIOkk6gr//f//AAH/4xbgFfsAAwABAAAAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAwBA/8ADwAPAABkAIgA5AAABLgEnLgEnLgEjISIGFREUFjMhMjY1ETQmJyceARcjNR4BFxMUBiMhIiY1ETQ2MzA6AjEVFBY7AREDlhEtGRozFycpC/4QIS8vIQLgIS8OHIUXJQ2aESkXbwkH/SAHCQkHm7qbEw3gAtsXMxoZLREcDi8h/KAhLy8hAnALKSc2FykRmg0lF/z/BwkJBwNgBwngDRP9kAAAAQAA/8AEAAPAACQAAAEhETQmKwEiBhURISIGHQEUFjMhERQWOwEyNjURITI2PQE0JiMD4P6gEw3ADRP+oA0TEw0BYBMNwA0TAWANExMNAkABYA0TEw3+oBMNwA0T/qANExMNAWATDcANEwAAAQAAAUAEAAJAABAAABMVFBYzITI2PQE0JiMhIgYVABMNA8ANExMN/EANEwIgwA0TEw3ADRMTDQABAAAAAQAAc8C9cl8PPPUACwQAAAAAANDtGaUAAAAA0O0ZpQAA/8AEAAPAAAAACAACAAAAAAAAAAEAAAPA/8AAAAQAAAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAgAAAAQAAEAEAAAABAAAAAAAAAAACgAUAB4AcgCoAMQAAQAAAAcAOgADAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAA4AAAABAAAAAAACAA4ARwABAAAAAAADAA4AJAABAAAAAAAEAA4AVQABAAAAAAAFABYADgABAAAAAAAGAAcAMgABAAAAAAAKADQAYwADAAEECQABAA4AAAADAAEECQACAA4ARwADAAEECQADAA4AJAADAAEECQAEAA4AVQADAAEECQAFABYADgADAAEECQAGAA4AOQADAAEECQAKADQAYwBpAGMAbwBtAG8AbwBuAFYAZQByAHMAaQBvAG4AIAAxAC4AMABpAGMAbwBtAG8AbwBuaWNvbW9vbgBpAGMAbwBtAG8AbwBuAFIAZQBnAHUAbABhAHIAaQBjAG8AbQBvAG8AbgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-file-empty:before {
+    content: "\e924";
+}
+
+.icon-plus:before {
+    content: "\ea0a";
+}
+
+.icon-minus:before {
+    content: "\ea0b";
+}
+
