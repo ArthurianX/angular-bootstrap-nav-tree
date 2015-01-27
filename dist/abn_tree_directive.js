@@ -2,9 +2,9 @@
   var module,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  module = angular.module('angularBootstrapNavTree', []);
+  module = angular.module('angularNavTree', []);
 
-  module.directive('abnTree', [
+  module.directive('nestedTree', [
     '$timeout', function($timeout) {
       return {
         restrict: 'E',
