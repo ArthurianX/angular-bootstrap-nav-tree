@@ -2,7 +2,7 @@ angular-nav-tree
 ==========================
 
 
-This is a Tree directive for Angular JS apps that is based 90% on Nick Perkin's [link:https://github.com/nickperkinslondon/angular-bootstrap-nav-tree]angular-bootstrap-nav-tree.
+This is a Tree directive for Angular JS apps that is based 90% on [Nick Perkin's angular-bootstrap-nav-tree](link:https://github.com/nickperkinslondon/angular-bootstrap-nav-tree).
 
 example: http://nickperkinslondon.github.io/angular-bootstrap-nav-tree/test/bs3_ng120_test_page.html
 
