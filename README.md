@@ -23,7 +23,7 @@ Just include the 2 files from "dist",
     abn_tree_directive.js
     abn_tree.css
 
-Add `'angularBootstrapNavTree'` to your module's list of dependencies.
+Add `'angularNavTree'` to your module's list of dependencies.
 
 Then put an `<abn-tree>` directive in your HTML.
 ( see the example in "test" )

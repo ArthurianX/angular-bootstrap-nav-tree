@@ -1,6 +1,6 @@
 {
-    "name": "angular-bootstrap-nav-tree",
-    "version": "0.2.0",
+    "name": "angular-nav-tree",
+    "version": "0.3.0",
     "description":"A Tree Control for AngularJS, using CSS animation and Bootstrap style",
     "main":["dist/abn_tree_directive.js","dist/abn_tree.css"],
     "licence":"MIT",
@@ -23,7 +23,6 @@
         "README.md"
     ],
     "dependencies": {
-        "angular": ">=1.0",
-        "bootstrap": ">=2.3"
+        "angular": ">=1.0"
     }
 }

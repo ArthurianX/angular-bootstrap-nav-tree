@@ -6,15 +6,21 @@ module.directive 'nestedTree',['$timeout',($timeout)->
   #templateUrl: '../dist/abn_tree_template.html' # <--- another way to do this
 
   template: """
-<ul class="nav nav-list nav-pills nav-stacked abn-tree">
-  <li ng-repeat="row in tree_rows | filter:{visible:true} track by row.branch.uid" ng-animate="'abn-tree-animate'" ng-class="'level-' + {{ row.level }} + (row.branch.selected ? ' active':'') + ' ' +row.classes.join(' ')" class="abn-tree-row"><a ng-click="user_clicks_branch(row.branch)"><i ng-class="row.tree_icon" ng-click="row.branch.expanded = !row.branch.expanded" class="indented tree-icon"> </i><span class="indented tree-label">{{ row.label }} </span></a></li>
-</ul>""" # will be replaced by Grunt, during build, with the actual Template HTML
+<div class="nestedTree">
+  <div ng-show="doSearch" class="abn-search">
+    <input type="text" ng-model="searchRes"/>
+  </div>
+  <ul class="nav nav-list nav-pills nav-stacked abn-tree">
+    <li ng-repeat="row in tree_rows | filter:{visible:true} | filter:searchRes track by row.branch.uid" ng-animate="'abn-tree-animate'" ng-class="'level-' + {{ row.level }} + (row.branch.selected ? ' active':'') + ' ' +row.classes.join(' ')" class="abn-tree-row"><a ng-click="user_clicks_branch(row.branch)"><i ng-class="row.tree_icon" ng-click="row.branch.expanded = !row.branch.expanded" class="indented tree-icon"></i><span class="indented tree-label">{{ row.label }}</span></a></li>
+  </ul>
+</div>""" # will be replaced by Grunt, during build, with the actual Template HTML
   replace:true
   scope:
     treeData:'='
     onSelect:'&'
     initialSelection:'@'
     treeControl:'='
+    showFilter:'@'
 
   link:(scope,element,attrs)->
 
@@ -469,6 +475,12 @@ module.directive 'nestedTree',['$timeout',($timeout)->
             if prev?
               tree.select_branch(prev)
               return prev
+
+
+    if scope.showFilter
+      scope.doSearch = true
+    else
+      scope.doSearch = false
 ]
 
 

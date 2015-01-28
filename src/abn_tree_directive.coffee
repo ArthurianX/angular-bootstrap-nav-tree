@@ -12,6 +12,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
     onSelect:'&'
     initialSelection:'@'
     treeControl:'='
+    showFilter:'@'
 
   link:(scope,element,attrs)->
 
@@ -466,6 +467,12 @@ module.directive 'nestedTree',['$timeout',($timeout)->
             if prev?
               tree.select_branch(prev)
               return prev
+
+
+    if scope.showFilter
+      scope.doSearch = true
+    else
+      scope.doSearch = false
 ]
 
 

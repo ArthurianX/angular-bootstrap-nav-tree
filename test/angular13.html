@@ -50,8 +50,8 @@
                         <hr>
                         <button ng-click="try_adding_a_branch()" class="btn btn-default btn-sm">Add Branch</button>
                     </td>
-                    <td style="vertical-align:top">
-                        <abn-tree tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Granny Smith"></abn-tree>
+                    <td style="vertical-align:top; width: 200px">
+                        <nested-tree show-filter="true" tree-data="my_data" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Granny Smith"></nested-tree>
                     </td>
                     <td style="padding:20px;vertical-align:top;">
                         <div style="width:300px" class="alert alert-warning">{{ output }}</div>
