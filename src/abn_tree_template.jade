@@ -21,9 +21,10 @@ div.nestedTree
             ng-click="row.branch.expanded = !row.branch.expanded"
             )
 
+          i.client.fa(
+            ng-if="row.type == 'client'"
+            class="{{row.icon}}"
+            )
+
           span.indented.tree-label
-            i.client.fa(
-                ng-if="row.type == 'client'"
-                class="{{row.icon}}"
-                )
             {{ row.title }}
