@@ -46,7 +46,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
       return
 
     if !scope.treeData.length?
-      if treeData.label?
+      if treeData.title?
         scope.treeData = [ treeData ]
       else
         alert 'treeData should be an array of root branches'
@@ -59,8 +59,8 @@ module.directive 'nestedTree',['$timeout',($timeout)->
     for_each_branch = (f)->      
       do_f = (branch,level)->
         f(branch,level)
-        if branch.children?
-          for child in branch.children
+        if branch.nodes?
+          for child in branch.nodes
             do_f(child,level + 1)
       for root_branch in scope.treeData
         do_f(root_branch,1)
@@ -158,8 +158,8 @@ module.directive 'nestedTree',['$timeout',($timeout)->
       # ...change them into objects:
       # 
       for_each_branch (branch)->
-        if branch.children
-          if branch.children.length > 0
+        if branch.nodes
+          if branch.nodes.length > 0
             # don't use Array.map ( old browsers don't have it )
             f = (e)->
               if typeof e == 'string'
@@ -167,10 +167,10 @@ module.directive 'nestedTree',['$timeout',($timeout)->
                 children:[]
               else
                 e
-            branch.children = ( f(child) for child in branch.children )
+            branch.nodes = ( f(child) for child in branch.nodes )
 
         else
-          branch.children = []
+          branch.nodes = []
 
 
       # give each Branch a UID ( to keep AngularJS happy )
@@ -182,8 +182,8 @@ module.directive 'nestedTree',['$timeout',($timeout)->
 
       # set all parents:
       for_each_branch (b)->
-        if angular.isArray b.children
-          for child in b.children
+        if angular.isArray b.nodes
+          for child in b.nodes
             child.parent_uid = b.uid
 
 
@@ -207,7 +207,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
         # they will be rendered like:
         # <i class="icon-plus"></i>
         #
-        if not branch.noLeaf and (not branch.children or branch.children.length == 0)
+        if not branch.noLeaf and (not branch.nodes or branch.nodes.length == 0)
           tree_icon = attrs.iconLeaf
           branch.classes.push "leaf" if "leaf" not in branch.classes
         else
@@ -223,7 +223,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
         scope.tree_rows.push
           level     : level
           branch    : branch
-          label     : branch.label
+          label     : branch.title
           classes   : branch.classes
           tree_icon : tree_icon
           visible   : visible
@@ -231,8 +231,8 @@ module.directive 'nestedTree',['$timeout',($timeout)->
         #
         # recursively add all children of this branch...( at Level+1 )
         #
-        if branch.children?
-          for child in branch.children
+        if branch.nodes?
+          for child in branch.nodes
             #
             # all branches are added to the list,
             #  but some are not visible
@@ -262,7 +262,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
     #
     if attrs.initialSelection?
       for_each_branch (b)->
-        if b.label == attrs.initialSelection
+        if b.title == attrs.initialSelection
           $timeout ->
             select_branch b
 
@@ -316,7 +316,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
           b
 
         tree.get_children = (b)->
-          b.children
+          b.nodes
 
         tree.select_parent_branch = (b)->
           if not b?
@@ -330,7 +330,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
 
         tree.add_branch = (parent,new_branch)->
           if parent?
-            parent.children.push new_branch
+            parent.nodes.push new_branch
             parent.expanded = true
           else
             scope.treeData.push new_branch
@@ -360,7 +360,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
           if b?
             p = tree.get_parent_branch(b)
             if p
-              siblings = p.children
+              siblings = p.nodes
             else
               siblings = scope.treeData # the root branches
             return siblings
@@ -404,8 +404,8 @@ module.directive 'nestedTree',['$timeout',($timeout)->
         tree.get_first_child = (b)->
           b ?= selected_branch
           if b?
-            if b.children?.length > 0
-              return b.children[0]
+            if b.nodes?.length > 0
+              return b.nodes[0]
 
 
         tree.get_closest_ancestor_next_sibling = (b)->
@@ -450,11 +450,11 @@ module.directive 'nestedTree',['$timeout',($timeout)->
         tree.last_descendant = (b)->
           if not b?
             debugger
-          n = b.children.length
+          n = b.nodes.length
           if n == 0
             return b
           else
-            last_child = b.children[n-1]
+            last_child = b.nodes[n-1]
             return tree.last_descendant(last_child)
 
 
