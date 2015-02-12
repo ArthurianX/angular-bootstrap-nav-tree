@@ -143,8 +143,8 @@
                   f = function(e) {
                     if (typeof e === 'string') {
                       return {
-                        label: e,
-                        children: []
+                        title: e,
+                        nodes: []
                       };
                     } else {
                       return e;
@@ -207,7 +207,7 @@
               scope.tree_rows.push({
                 level: level,
                 branch: branch,
-                label: branch.title,
+                title: branch.title,
                 classes: branch.classes,
                 tree_icon: tree_icon,
                 visible: visible

@@ -163,8 +163,8 @@ module.directive 'nestedTree',['$timeout',($timeout)->
             # don't use Array.map ( old browsers don't have it )
             f = (e)->
               if typeof e == 'string'
-                label:e
-                children:[]
+                title:e
+                nodes:[]
               else
                 e
             branch.nodes = ( f(child) for child in branch.nodes )
@@ -223,7 +223,7 @@ module.directive 'nestedTree',['$timeout',($timeout)->
         scope.tree_rows.push
           level     : level
           branch    : branch
-          label     : branch.title
+          title     : branch.title
           classes   : branch.classes
           tree_icon : tree_icon
           visible   : visible
