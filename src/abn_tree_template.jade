@@ -22,7 +22,8 @@ div.nestedTree
             )
 
           span.indented.tree-label
-            i.client.fa.{{row.icon}}(
+            i.client.fa(
                 ng-if="row.type == 'client'"
+                class="{{row.icon}}"
                 )
             {{ row.title }}
